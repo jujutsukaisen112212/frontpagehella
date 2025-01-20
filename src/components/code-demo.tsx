@@ -3,6 +3,8 @@
 import { SplineScene } from "@/components/ui/splite";
 import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
+import { Button } from "@/components/ui/button"
+import { Github, GitBranch, Mail } from "lucide-react"
  
 export function SplineSceneBasic() {
   return (
@@ -21,6 +23,36 @@ export function SplineSceneBasic() {
             Bring your UI to life with beautiful 3D scenes. Create immersive experiences 
             that capture attention and enhance your design.
           </p>
+          
+          {/* Login Section */}
+          <div className="mt-8 flex flex-col gap-4 max-w-sm mx-auto">
+            <Button 
+              variant="outline" 
+              className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
+              onClick={() => console.log('Google login clicked')}
+            >
+              <Mail className="h-5 w-5" />
+              Continue with Google
+            </Button>
+            
+            <Button 
+              variant="outline"
+              className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
+              onClick={() => console.log('GitHub login clicked')}
+            >
+              <Github className="h-5 w-5" />
+              Continue with GitHub
+            </Button>
+            
+            <Button 
+              variant="outline"
+              className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
+              onClick={() => console.log('Git login clicked')}
+            >
+              <GitBranch className="h-5 w-5" />
+              Continue with Git
+            </Button>
+          </div>
         </div>
 
         {/* Right content */}
