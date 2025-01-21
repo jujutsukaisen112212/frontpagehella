@@ -6,12 +6,29 @@ import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
 import { Button } from "@/components/ui/button"
 import { Github, GitBranch, Mail } from "lucide-react"
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
  
 export function SplineSceneBasic() {
   const navigate = useNavigate();
 
-  const handleGoogleLogin = () => {
-    navigate("/login");
+  const handleGoogleLogin = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/chat`,
+        },
+      });
+      
+      if (error) {
+        toast.error("Failed to sign in with Google");
+        console.error("OAuth error:", error);
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred");
+      console.error("Sign in error:", error);
+    }
   };
 
   return (
