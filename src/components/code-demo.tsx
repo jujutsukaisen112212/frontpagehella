@@ -5,15 +5,8 @@ import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
 import { Button } from "@/components/ui/button"
 import { Github, GitBranch, Mail } from "lucide-react"
-import { useNavigate } from "react-router-dom"
  
 export function SplineSceneBasic() {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    navigate('/login');
-  };
-  
   return (
     <Card className="w-full h-[500px] bg-black/[0.96] relative overflow-hidden">
       <Spotlight
@@ -32,7 +25,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline" 
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={handleLogin}
+              onClick={() => console.log('Google login clicked')}
             >
               <Mail className="h-5 w-5" />
               Continue with Google
@@ -41,7 +34,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline"
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={handleLogin}
+              onClick={() => console.log('GitHub login clicked')}
             >
               <Github className="h-5 w-5" />
               Continue with GitHub
@@ -50,7 +43,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline"
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={handleLogin}
+              onClick={() => console.log('Git login clicked')}
             >
               <GitBranch className="h-5 w-5" />
               Continue with Git
