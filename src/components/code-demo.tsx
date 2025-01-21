@@ -12,17 +12,17 @@ import { toast } from "sonner";
 export function SplineSceneBasic() {
   const navigate = useNavigate();
 
-  const handleGoogleLogin = async () => {
+  const handleLogin = async (provider: 'google' | 'github' | 'gitlab') => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
+        provider,
         options: {
           redirectTo: `${window.location.origin}/chat`,
         },
       });
       
       if (error) {
-        toast.error("Failed to sign in with Google");
+        toast.error(`Failed to sign in with ${provider}`);
         console.error("OAuth error:", error);
       }
     } catch (error) {
@@ -47,7 +47,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline" 
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={handleGoogleLogin}
+              onClick={() => handleLogin('google')}
             >
               <Mail className="h-5 w-5" />
               Continue with Google
@@ -56,7 +56,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline"
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={handleGoogleLogin}
+              onClick={() => handleLogin('github')}
             >
               <Github className="h-5 w-5" />
               Continue with GitHub
@@ -65,7 +65,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline"
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={handleGoogleLogin}
+              onClick={() => handleLogin('gitlab')}
             >
               <GitBranch className="h-5 w-5" />
               Continue with Git
