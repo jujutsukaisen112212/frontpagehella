@@ -1,5 +1,6 @@
 'use client'
 
+import { useNavigate } from "react-router-dom";
 import { SplineScene } from "@/components/ui/splite";
 import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
@@ -7,6 +8,12 @@ import { Button } from "@/components/ui/button"
 import { Github, GitBranch, Mail } from "lucide-react"
  
 export function SplineSceneBasic() {
+  const navigate = useNavigate();
+
+  const handleGoogleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <Card className="w-full h-[500px] bg-black/[0.96] relative overflow-hidden">
       <Spotlight
@@ -14,18 +21,16 @@ export function SplineSceneBasic() {
       />
       
       <div className="flex h-full">
-        {/* Left content */}
         <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
             WELCOME TO HELLA THE CHAT BOT
           </h1>
           
-          {/* Login Section */}
           <div className="mt-8 flex flex-col gap-4 max-w-sm mx-auto">
             <Button 
               variant="outline" 
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={() => console.log('Google login clicked')}
+              onClick={handleGoogleLogin}
             >
               <Mail className="h-5 w-5" />
               Continue with Google
@@ -34,7 +39,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline"
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={() => console.log('GitHub login clicked')}
+              onClick={handleGoogleLogin}
             >
               <Github className="h-5 w-5" />
               Continue with GitHub
@@ -43,7 +48,7 @@ export function SplineSceneBasic() {
             <Button 
               variant="outline"
               className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white"
-              onClick={() => console.log('Git login clicked')}
+              onClick={handleGoogleLogin}
             >
               <GitBranch className="h-5 w-5" />
               Continue with Git
@@ -51,7 +56,6 @@ export function SplineSceneBasic() {
           </div>
         </div>
 
-        {/* Right content */}
         <div className="flex-1 relative">
           <SplineScene 
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
@@ -60,5 +64,5 @@ export function SplineSceneBasic() {
         </div>
       </div>
     </Card>
-  )
+  );
 }
