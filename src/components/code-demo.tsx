@@ -17,7 +17,7 @@ export function SplineSceneBasic() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: `${window.location.origin}/chat`,
+          redirectTo: window.location.origin + '/chat',
         },
       });
       
